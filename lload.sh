@@ -1,6 +1,6 @@
 #!/bin/bash
 
 while true; do
-	~/stats2.sh
+	~/stats.sh
 	sleep 60
 done
