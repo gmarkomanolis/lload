@@ -15,7 +15,9 @@ endl=`tail -n 1 file_list | awk 'BEGIN{FS="."}{print $2}'`
 
 echo -e "Date start: "$startl" end: "$endl
 echo "Records: "`wc -l < file_list`
-cat delete | awk 'BEGIN{users_min=1000;users_max=0;mem_min=1024;mem_max=0;cpu_min=8000;cpu_max=0}{if($1>users_max) users_max=$1; if($1<users_min) users_min=$1;if($2>mem_max) mem_max=$2;if($2<mem_min) mem_min=$2;if($3>cpu_max) cpu_max=$3;if($3<cpu_min) cpu_min=$3}END{print "users: min " users_min " max " users_max"\nmemory: min " mem_min " max " mem_max"\ncpu: min " cpu_min " max " cpu_max}'
 
+cat delete | awk 'BEGIN{users_min=1000;users_max=0;mem_min=1024;mem_max=0;cpu_min=8000;cpu_max=0}{if($1>users_max) users_max=$1; if($1<users_min) users_min=$1;if($2>mem_max) mem_max=$2;if($2<mem_min) mem_min=$2;if($3>cpu_max) cpu_max=$3;if($3<cpu_min) cpu_min=$3}END{print "users: min " users_min " max " users_max"\nmemory: min " mem_min"% max " mem_max"%\ncpu: min " cpu_min"% max " cpu_max"%"}'
+
+echo "CPU utilization is according to ps and per core"
 
 rm delete
