@@ -3,7 +3,9 @@ Scripts to extract the old of login nodes, still early version
 
 Have all the files in the same folder
 
-Execute from eahc login node
+Edit the config file to declare the prefix of your login node and the timestep, in seconds, every when to extract information about the login node
+
+Execute from each login node
 
 ```
 ./lload.sh &
@@ -17,7 +19,7 @@ Execute:
 prepare_stats.sh i
 ``
 
-where i is the id of the login node. You need to change the 3rd line of the file prepare_stats.sh in case your login node is not called login1 etc...
+where i is the id of the login node. 
 
 The output will be something like:
 

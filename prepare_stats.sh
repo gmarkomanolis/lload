@@ -1,6 +1,8 @@
 #!/bin/bash
 
-ls -ltr login$1* | awk '{print $NF}' > file_list
+loginpref=`cat config  | grep login_node_prefix | awk 'BEGIN{FS="="}{print $2}'`
+
+ls -ltr ${loginpref}$1* | awk '{print $NF}' > file_list
 for i in `cat file_list`; do cat $i | grep Active |awk '{print $3}'; done  > users_num
 #cat users_num | awk 'BEGIN {b=0;s=1000}{if($1>b) b=$1;if($1<s) s=$1}END{print s,b}';
 
@@ -13,6 +15,7 @@ paste users_num utilization > delete
 startl=`head -n 1 file_list | awk 'BEGIN{FS="."}{print $2}'`
 endl=`tail -n 1 file_list | awk 'BEGIN{FS="."}{print $2}'`
 
+echo "Login node: "${loginpref}$1
 echo -e "Date start: "$startl" end: "$endl
 echo "Records: "`wc -l < file_list`
 
