@@ -5,7 +5,7 @@ fileout=$(hostname).${timestamp}
 w > $fileout
 
 
-echo "all users " users >> $fileout
+echo "all users " $(users) >> $fileout
 num_users=`users | awk '{print NF}'` 
 
 echo -e "\nActive users= "$num_users >> $fileout
